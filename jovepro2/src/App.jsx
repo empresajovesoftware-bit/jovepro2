@@ -76,7 +76,7 @@ function App() {
               }}
             >
 
-              Diseñado y desarrollado por Juan Miguel C. 🚀
+              Designed and developed by Juan Miguel C. 🚀
 
             </motion.p>
 
@@ -145,10 +145,10 @@ function App() {
             </div>
 
             <nav className="nav-links">
-              <a href="#">Inicio</a>
-              <a href="#services">Servicios</a>
-              <a href="#projects">Proyectos</a>
-              <a href="#contact">Contacto</a>
+              <a href="#">Home</a>
+              <a href="#services">Services</a>
+              <a href="#projects">Projects</a>
+              <a href="#contact">Contact</a>
             </nav>
 
             <div className="mobile-menu">
@@ -169,23 +169,22 @@ function App() {
             >
 
               <span className="badge">
-                🚀 EXPERIENCIA DIGITAL PREMIUM
+                🚀 PREMIUM DIGITAL EXPERIENCE
               </span>
 
               <h1>
-                Diseñamos el futuro digital
+                We design the digital future
               </h1>
 
               <p>
-                Creamos experiencias web modernas,
-                futuristas y ultra profesionales.
+                We create modern, futuristic and ultra professional web experiences.
               </p>
 
               <motion.button
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Empezar Proyecto
+                Start Project
               </motion.button>
 
             </motion.div>
@@ -203,10 +202,10 @@ function App() {
                 scale: 1.03
               }}
             >
-              <h2>⚡ Velocidad</h2>
+              <h2>⚡ Speed</h2>
 
               <p>
-                Sitios optimizados y rápidos.
+                Fast and optimized websites.
               </p>
             </motion.div>
 
@@ -217,10 +216,10 @@ function App() {
                 scale: 1.03
               }}
             >
-              <h2>🎨 Diseño</h2>
+              <h2>🎨 Design</h2>
 
               <p>
-                Interfaces premium y futuristas.
+                Premium and futuristic interfaces.
               </p>
             </motion.div>
 
@@ -231,10 +230,10 @@ function App() {
                 scale: 1.03
               }}
             >
-              <h2>🔥 Experiencia</h2>
+              <h2>🔥 Experience</h2>
 
               <p>
-                Animaciones modernas y fluidas.
+                Modern and fluid animations.
               </p>
             </motion.div>
 
@@ -247,11 +246,11 @@ function App() {
             <div className="project-title">
 
               <span className="project-badge">
-                NUESTROS PROYECTOS
+                OUR PROJECTS
               </span>
 
               <h2>
-                Diseños modernos y profesionales
+                Modern and professional designs
               </h2>
 
             </div>
@@ -271,7 +270,7 @@ function App() {
                 <h3>Startup UI</h3>
 
                 <p>
-                  Interfaz moderna para empresas tecnológicas.
+                  Modern interface for technology companies.
                 </p>
 
               </motion.div>
@@ -289,7 +288,7 @@ function App() {
                 <h3>Business Landing</h3>
 
                 <p>
-                  Página premium para negocios y marcas.
+                  Premium page for businesses and brands.
                 </p>
 
               </motion.div>
@@ -307,7 +306,7 @@ function App() {
                 <h3>AI Experience</h3>
 
                 <p>
-                  Diseño futurista inspirado en inteligencia artificial.
+                  Futuristic design inspired by artificial intelligence.
                 </p>
 
               </motion.div>
@@ -329,31 +328,31 @@ function App() {
             >
 
               <span className="contact-badge">
-                CONTACTO
+                CONTACT
               </span>
 
               <h2>
-                Hablemos de tu próximo proyecto
+                Let's talk about your next project
               </h2>
 
               <form className="contact-form">
 
                 <input
                   type="text"
-                  placeholder="Tu nombre"
+                  placeholder="Your name"
                 />
 
                 <input
                   type="email"
-                  placeholder="Tu correo"
+                  placeholder="Your email"
                 />
 
                 <textarea
-                  placeholder="Cuéntanos tu idea"
+                  placeholder="Tell us about your idea"
                 ></textarea>
 
                 <button type="submit">
-                  Enviar Mensaje
+                  Send Message
                 </button>
 
               </form>
@@ -375,25 +374,24 @@ function App() {
                 </h3>
 
                 <p>
-                  Diseñamos experiencias digitales modernas,
-                  rápidas y profesionales.
+                  We design modern, fast and professional digital experiences.
                 </p>
 
               </div>
 
               <div className="footer-links">
 
-                <a href="#">Inicio</a>
-                <a href="#services">Servicios</a>
-                <a href="#projects">Proyectos</a>
-                <a href="#contact">Contacto</a>
+                <a href="#">Home</a>
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
 
               </div>
 
             </div>
 
             <div className="footer-bottom">
-              © 2025 JovePro — Diseñado y desarrollado por Juan Miguel C. 🚀
+              © 2025 JovePro — Designed and developed by Juan Miguel C. 🚀
             </div>
 
           </footer>
