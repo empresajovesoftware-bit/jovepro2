@@ -16,7 +16,7 @@ function App() {
 
     const moveCursor = (e) => {
 
-      if(cursor){
+      if (cursor) {
         cursor.style.left = e.clientX + "px";
         cursor.style.top = e.clientY + "px";
       }
@@ -32,13 +32,10 @@ function App() {
   }, []);
 
   return (
+
     <div className="app">
 
-      {/* CURSOR GLOW */}
-
       <div className="cursor-glow"></div>
-
-      {/* PARTICLES */}
 
       <Particles
         id="tsparticles"
@@ -94,9 +91,9 @@ function App() {
 
         <nav>
           <a href="#">Inicio</a>
-          <a href="#">Servicios</a>
-          <a href="#">Proyectos</a>
-          <a href="#">Contacto</a>
+          <a href="#services">Servicios</a>
+          <a href="#projects">Proyectos</a>
+          <a href="#contact">Contacto</a>
         </nav>
 
       </header>
@@ -136,134 +133,65 @@ function App() {
 
       </section>
 
-      {/* CARDS */}
+      {/* SERVICIOS */}
 
-      <section className="cards">
+      <section className="cards" id="services">
 
         <motion.div
           className="card"
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           whileHover={{
             y: -12,
             scale: 1.03
           }}
         >
+
           <h2>⚡ Velocidad</h2>
 
           <p>
             Sitios optimizados y rápidos.
           </p>
+
         </motion.div>
 
         <motion.div
           className="card"
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
           whileHover={{
             y: -12,
             scale: 1.03
           }}
         >
+
           <h2>🎨 Diseño</h2>
 
           <p>
             Interfaces premium y futuristas.
           </p>
+
         </motion.div>
 
         <motion.div
           className="card"
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
           whileHover={{
             y: -12,
             scale: 1.03
           }}
         >
+
           <h2>🔥 Experiencia</h2>
 
           <p>
             Animaciones modernas y fluidas.
           </p>
-        </motion.div>
-
-      </section>
-
-      {/* ABOUT */}
-
-      <section className="about">
-
-        <motion.div
-          className="about-text"
-          initial={{ opacity: 0, x: -80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-        >
-
-          <span className="about-badge">
-            SOBRE NOSOTROS
-          </span>
-
-          <h2>
-            Creamos experiencias digitales
-            modernas e impactantes
-          </h2>
-
-          <p>
-            Nuestro objetivo es ayudar a negocios
-            y marcas a destacar con páginas web
-            profesionales, rápidas y visualmente
-            impresionantes.
-          </p>
-
-        </motion.div>
-
-        <motion.div
-          className="stats"
-          initial={{ opacity: 0, x: 80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-        >
-
-          <div className="stat">
-            <h3>+120</h3>
-            <span>Clientes</span>
-          </div>
-
-          <div className="stat">
-            <h3>+300</h3>
-            <span>Proyectos</span>
-          </div>
-
-          <div className="stat">
-            <h3>99%</h3>
-            <span>Satisfacción</span>
-          </div>
 
         </motion.div>
 
       </section>
 
-      {/* PROJECTS */}
+      {/* PROYECTOS */}
 
-      <section className="projects">
+      <section className="projects" id="projects">
 
-        <motion.div
-          className="project-title"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-        >
+        <div className="project-title">
 
           <span className="project-badge">
             NUESTROS PROYECTOS
@@ -273,7 +201,7 @@ function App() {
             Diseños modernos y profesionales
           </h2>
 
-        </motion.div>
+        </div>
 
         <div className="project-grid">
 
@@ -335,6 +263,46 @@ function App() {
 
       </section>
 
+      {/* CONTACTO */}
+
+      <section className="contact" id="contact">
+
+        <div className="contact-box">
+
+          <span className="contact-badge">
+            CONTACTO
+          </span>
+
+          <h2>
+            Hablemos de tu próximo proyecto
+          </h2>
+
+          <form className="contact-form">
+
+            <input
+              type="text"
+              placeholder="Tu nombre"
+            />
+
+            <input
+              type="email"
+              placeholder="Tu correo"
+            />
+
+            <textarea
+              placeholder="Cuéntanos tu idea"
+            ></textarea>
+
+            <button type="submit">
+              Enviar Mensaje
+            </button>
+
+          </form>
+
+        </div>
+
+      </section>
+
       {/* FOOTER */}
 
       <footer className="footer">
@@ -357,9 +325,9 @@ function App() {
           <div className="footer-links">
 
             <a href="#">Inicio</a>
-            <a href="#">Servicios</a>
-            <a href="#">Proyectos</a>
-            <a href="#">Contacto</a>
+            <a href="#services">Servicios</a>
+            <a href="#projects">Proyectos</a>
+            <a href="#contact">Contacto</a>
 
           </div>
 
@@ -372,7 +340,9 @@ function App() {
       </footer>
 
     </div>
+
   );
+
 }
 
 export default App;
