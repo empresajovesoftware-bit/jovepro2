@@ -1,48 +1,26 @@
 import "./App.css";
-import Counter from "./components/Counter";
-
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-
-import { useEffect, useRef } from "react";
-
-import emailjs from "@emailjs/browser";
+import { useEffect, useState } from "react";
 
 function App() {
 
-  const form = useRef();
+  const [loading, setLoading] = useState(true);
+
+  const [count, setCount] = useState(0);
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const particlesInit = async (main) => {
     await loadFull(main);
   };
 
-  const sendEmail = (e) => {
-
-    e.preventDefault();
-
-    emailjs.sendForm(
-      "service_i4rjtam",
-      "template_rtexhbr",
-      form.current,
-      "-sp_Lsyt8XcWFYvXn"
-    )
-
-    .then(() => {
-
-      alert("Mensaje enviado 🚀");
-
-    })
-
-    .catch(() => {
-
-      alert("Error al enviar");
-
-    });
-
-  };
-
   useEffect(() => {
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
 
     const cursor = document.querySelector(".cursor-glow");
 
@@ -58,6 +36,7 @@ function App() {
     window.addEventListener("mousemove", moveCursor);
 
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("mousemove", moveCursor);
     };
 
@@ -65,314 +44,519 @@ function App() {
 
   return (
 
-    <div className="app">
+    <>
 
-      {/* CURSOR */}
+      <AnimatePresence>
 
-      <div className="cursor-glow"></div>
-
-      {/* PARTICLES */}
-
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={{
-          background: {
-            color: {
-              value: "#020617",
-            },
-          },
-
-          fpsLimit: 120,
-
-          particles: {
-            number: {
-              value: 70,
-            },
-
-            color: {
-              value: "#60a5fa",
-            },
-
-            links: {
-              enable: true,
-              color: "#60a5fa",
-              distance: 150,
-              opacity: 0.2,
-            },
-
-            move: {
-              enable: true,
-              speed: 1,
-            },
-
-            opacity: {
-              value: 0.3,
-            },
-
-            size: {
-              value: 2,
-            },
-          },
-        }}
-      />
-
-      {/* NAVBAR */}
-
-      <header className="navbar">
-
-        <div className="logo">
-          JovePro
-        </div>
-
-        <nav className="nav-links">
-
-          <a href="#">Home</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-
-        </nav>
-
-      </header>
-
-      {/* HERO */}
-
-      <section className="hero">
-
-        <motion.div
-          className="content"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-
-          <span className="badge">
-            🚀 PREMIUM DIGITAL EXPERIENCE
-          </span>
-
-          <h1>
-            We design the digital future
-          </h1>
-
-          <p>
-            We create modern, futuristic and ultra professional web experiences.
-          </p>
-
-          <motion.button
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Start Project
-          </motion.button>
-
-        </motion.div>
-
-      </section>
-
-      {/* SERVICES */}
-
-      <section className="cards" id="services">
-
-        <motion.div
-          className="card"
-          whileHover={{
-            y: -12,
-            scale: 1.03
-          }}
-        >
-
-          <h2>⚡ Speed</h2>
-
-          <p>
-            Optimized and ultra fast websites.
-          </p>
-
-        </motion.div>
-
-        <motion.div
-          className="card"
-          whileHover={{
-            y: -12,
-            scale: 1.03
-          }}
-        >
-
-          <h2>🎨 Design</h2>
-
-          <p>
-            Premium futuristic interfaces.
-          </p>
-
-        </motion.div>
-
-        <motion.div
-          className="card"
-          whileHover={{
-            y: -12,
-            scale: 1.03
-          }}
-        >
-
-          <h2>🔥 Experience</h2>
-
-          <p>
-            Modern smooth animations and interactions.
-          </p>
-
-        </motion.div>
-
-      </section>
-
-      {/* COUNTER */}
-
-      <Counter />
-
-      {/* PROJECTS */}
-
-      <section className="projects" id="projects">
-
-        <div className="project-title">
-
-          <span className="project-badge">
-            OUR PROJECTS
-          </span>
-
-          <h2>
-            Modern and professional designs
-          </h2>
-
-        </div>
-
-        <div className="project-grid">
+        {loading && (
 
           <motion.div
-            className="project-card"
-            whileHover={{
-              y: -10,
-              scale: 1.02
-            }}
+            className="loader"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
           >
 
-            <div className="project-image"></div>
+            <motion.h1
+              initial={{
+                scale: 0.8,
+                opacity: 0
+              }}
+              animate={{
+                scale: 1,
+                opacity: 1
+              }}
+              transition={{
+                duration: 1
+              }}
+            >
 
-            <h3>Startup UI</h3>
+              JovePro
 
-            <p>
-              Modern interface for tech companies.
-            </p>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 1
+              }}
+            >
+
+              Designed and developed by Juan Miguel C. 🚀
+
+            </motion.p>
 
           </motion.div>
 
-          <motion.div
-            className="project-card"
-            whileHover={{
-              y: -10,
-              scale: 1.02
+        )}
+
+      </AnimatePresence>
+
+      {!loading && (
+
+        <div className="app">
+
+          {/* CURSOR */}
+
+          <div className="cursor-glow"></div>
+
+          {/* PARTICLES */}
+
+          <Particles
+            id="tsparticles"
+            init={particlesInit}
+            options={{
+              background: {
+                color: {
+                  value: "#020617",
+                },
+              },
+
+              fpsLimit: 120,
+
+              particles: {
+
+                number: {
+                  value: 80,
+                },
+
+                color: {
+                  value: "#60a5fa",
+                },
+
+                links: {
+                  enable: true,
+                  color: "#60a5fa",
+                  distance: 140,
+                  opacity: 0.2,
+                },
+
+                move: {
+                  enable: true,
+                  speed: 1.2,
+                },
+
+                opacity: {
+                  value: 0.3,
+                },
+
+                size: {
+                  value: 2,
+                },
+              },
             }}
+          />
+
+          {/* NAVBAR */}
+
+          <header className="navbar">
+
+            <motion.div
+              className="logo"
+              whileHover={{ scale: 1.1 }}
+            >
+              JovePro
+            </motion.div>
+
+            <nav className="nav-links">
+
+              <a href="#">
+                Home
+              </a>
+
+              <a href="#services">
+                Services
+              </a>
+
+              <a href="#projects">
+                Projects
+              </a>
+
+              <a href="#contact">
+                Contact
+              </a>
+
+            </nav>
+
+            <div
+              className="mobile-menu"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              ☰
+            </div>
+
+          </header>
+
+          {/* MOBILE MENU */}
+
+          {
+            menuOpen && (
+
+              <div className="mobile-nav">
+
+                <a href="#">
+                  Home
+                </a>
+
+                <a href="#services">
+                  Services
+                </a>
+
+                <a href="#projects">
+                  Projects
+                </a>
+
+                <a href="#contact">
+                  Contact
+                </a>
+
+              </div>
+
+            )
+          }
+
+          {/* HERO */}
+
+          <section className="hero">
+
+            <motion.div
+              className="content"
+              initial={{
+                opacity: 0,
+                y: 50
+              }}
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+              transition={{
+                duration: 1
+              }}
+            >
+
+              <span className="badge">
+                🚀 PREMIUM DIGITAL EXPERIENCE
+              </span>
+
+              <h1>
+                We design the digital future
+              </h1>
+
+              <p>
+                We create modern, futuristic and ultra professional digital experiences for brands, startups and businesses.
+              </p>
+
+              <motion.button
+                whileHover={{
+                  scale: 1.08
+                }}
+                whileTap={{
+                  scale: 0.95
+                }}
+              >
+                Start Project
+              </motion.button>
+
+            </motion.div>
+
+          </section>
+
+          {/* SERVICES */}
+
+          <section
+            className="cards"
+            id="services"
           >
 
-            <div className="project-image image2"></div>
+            <motion.div
+              className="card"
+              whileHover={{
+                y: -12,
+                scale: 1.03
+              }}
+            >
 
-            <h3>Business Landing</h3>
+              <h2>
+                ⚡ Speed
+              </h2>
 
-            <p>
-              Premium website for modern businesses.
-            </p>
+              <p>
+                Ultra fast and optimized websites.
+              </p>
 
-          </motion.div>
+            </motion.div>
 
-          <motion.div
-            className="project-card"
-            whileHover={{
-              y: -10,
-              scale: 1.02
-            }}
+            <motion.div
+              className="card"
+              whileHover={{
+                y: -12,
+                scale: 1.03
+              }}
+            >
+
+              <h2>
+                🎨 Design
+              </h2>
+
+              <p>
+                Premium interfaces inspired by Apple and Tesla.
+              </p>
+
+            </motion.div>
+
+            <motion.div
+              className="card"
+              whileHover={{
+                y: -12,
+                scale: 1.03
+              }}
+            >
+
+              <h2>
+                🔥 Experience
+              </h2>
+
+              <p>
+                Cinematic animations and futuristic interactions.
+              </p>
+
+            </motion.div>
+
+          </section>
+
+          {/* PROJECTS */}
+
+          <section
+            className="projects"
+            id="projects"
           >
 
-            <div className="project-image image3"></div>
+            <div className="project-title">
 
-            <h3>AI Experience</h3>
+              <span className="project-badge">
+                OUR PROJECTS
+              </span>
 
-            <p>
-              Futuristic design inspired by AI systems.
-            </p>
+              <h2>
+                Modern and futuristic experiences
+              </h2>
 
-          </motion.div>
+            </div>
+
+            <div className="project-grid">
+
+              <motion.div
+                className="project-card"
+                whileHover={{
+                  y: -10,
+                  scale: 1.02
+                }}
+              >
+
+                <div className="project-image"></div>
+
+                <h3>
+                  Startup UI
+                </h3>
+
+                <p>
+                  Futuristic interface for technology companies.
+                </p>
+
+              </motion.div>
+
+              <motion.div
+                className="project-card"
+                whileHover={{
+                  y: -10,
+                  scale: 1.02
+                }}
+              >
+
+                <div className="project-image image2"></div>
+
+                <h3>
+                  Business Landing
+                </h3>
+
+                <p>
+                  Premium landing page for modern brands.
+                </p>
+
+              </motion.div>
+
+              <motion.div
+                className="project-card"
+                whileHover={{
+                  y: -10,
+                  scale: 1.02
+                }}
+              >
+
+                <div className="project-image image3"></div>
+
+                <h3>
+                  AI Experience
+                </h3>
+
+                <p>
+                  Artificial intelligence inspired futuristic design.
+                </p>
+
+              </motion.div>
+
+            </div>
+
+          </section>
+
+          {/* COUNTER */}
+
+          <section className="counter-section">
+
+            <h2>
+              Interactive React Counter
+            </h2>
+
+            <div className="counter-box">
+
+              <h1>
+                {count}
+              </h1>
+
+              <div className="counter-buttons">
+
+                <button onClick={() => setCount(count + 1)}>
+                  + Add
+                </button>
+
+                <button onClick={() => setCount(count - 1)}>
+                  - Remove
+                </button>
+
+                <button onClick={() => setCount(0)}>
+                  Reset
+                </button>
+
+              </div>
+
+            </div>
+
+          </section>
+
+          {/* CONTACT */}
+
+          <section
+            className="contact"
+            id="contact"
+          >
+
+            <motion.div
+              className="contact-box"
+              initial={{
+                opacity: 0,
+                y: 80
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0
+              }}
+              transition={{
+                duration: 1
+              }}
+              viewport={{
+                once: true
+              }}
+            >
+
+              <span className="contact-badge">
+                CONTACT
+              </span>
+
+              <h2>
+                Let's build your next project
+              </h2>
+
+              <form className="contact-form">
+
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                />
+
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                />
+
+                <textarea
+                  placeholder="Tell us about your idea"
+                ></textarea>
+
+                <button type="submit">
+                  Send Message
+                </button>
+
+              </form>
+
+            </motion.div>
+
+          </section>
+
+          {/* FOOTER */}
+
+          <footer className="footer">
+
+            <div className="footer-content">
+
+              <div>
+
+                <h3 className="footer-logo">
+                  JovePro
+                </h3>
+
+                <p>
+                  Modern premium digital experiences.
+                </p>
+
+              </div>
+
+              <div className="footer-links">
+
+                <a href="#">
+                  Home
+                </a>
+
+                <a href="#services">
+                  Services
+                </a>
+
+                <a href="#projects">
+                  Projects
+                </a>
+
+                <a href="#contact">
+                  Contact
+                </a>
+
+              </div>
+
+            </div>
+
+            <div className="footer-bottom">
+              © 2025 JovePro — Designed and developed by Juan Miguel C. 🚀
+            </div>
+
+          </footer>
 
         </div>
 
-      </section>
+      )}
 
-      {/* CONTACT */}
-
-      <section className="contact" id="contact">
-
-        <motion.div
-          className="contact-box"
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-        >
-
-          <span className="contact-badge">
-            CONTACT
-          </span>
-
-          <h2>
-            Let's build your next project
-          </h2>
-
-          <form
-            ref={form}
-            onSubmit={sendEmail}
-            className="contact-form"
-          >
-
-            <input
-              type="text"
-              name="from_name"
-              placeholder="Your Name"
-              required
-            />
-
-            <input
-              type="email"
-              name="from_email"
-              placeholder="Your Email"
-              required
-            />
-
-            <textarea
-              name="message"
-              placeholder="Tell us about your idea"
-              required
-            ></textarea>
-
-            <button type="submit">
-              Send Message
-            </button>
-
-          </form>
-
-        </motion.div>
-
-      </section>
-
-      {/* FOOTER */}
-
-      <footer className="footer">
-
-        <h2>
-          Designed and developed by Juan Miguel C. 🚀
-        </h2>
-
-      </footer>
-
-    </div>
+    </>
 
   );
+
 }
 
 export default App;
